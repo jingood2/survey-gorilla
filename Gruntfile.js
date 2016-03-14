@@ -15,7 +15,11 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
-    injector: 'grunt-asset-injector'
+    injector: 'grunt-asset-injector',
+    nggettext_extract: 'grunt-angular-gettext',
+    nggettext_compile: 'grunt-angular-gettext',
+    nggettext_msg_extract: 'grunt-angular-gettext-message',
+    nggettext_msg_compile: 'grunt-angular-gettext-message'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -434,6 +438,8 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.client %>/index.html': [
               ['{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
+               '!{.tmp,<%= yeoman.client %>}/components/translation/*.js',
+               '!{.tmp,<%= yeoman.client %>}/components/message/*.js',
                '!{.tmp,<%= yeoman.client %>}/app/app.js',
                '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
                '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js']
@@ -460,6 +466,47 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    nggettext_extract: {
+      pot: {
+        files: {
+          'client/components/translation/po/origin_template.pot': [
+            'client/index.html',
+            'client/app/**/*.html',
+            'client/components/navbar/*.html'
+          ]
+        }
+      },
+    },
+    nggettext_compile: {
+      all: {
+        options: {
+          module: 'sg.translation'
+        },
+        files: {
+          'client/components/translation/sg.translation.js': ['client/components/translation/po/*.po']
+        }
+      },
+    },
+    nggettext_msg_extract: {
+      pot: {
+        files: {
+          'client/components/message/po/origin_template.pot': [
+            'client/components/message/message.html'
+          ]
+        }
+      },
+    },
+    nggettext_msg_compile: {
+      all: {
+        options: {
+          module: 'sg.message'
+        },
+        files: {
+          'client/components/message/sg.message.js': ['client/components/message/po/*.po']
+        }
+      },
+    }
   });
 
   // Used for delaying livereload until after server has restarted

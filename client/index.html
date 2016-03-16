@@ -26,6 +26,9 @@
       <link rel="stylesheet" href="app/main/main.css">
       <!-- endinjector -->
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="bower_components/toastr/toastr.css">
+
     <!-- endbuild -->
 
     <!-- you always must create element tag when you use angular-ui bootstrap with Element tag in IE8 -->
@@ -77,6 +80,8 @@
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+      <script src="bower_components/toastr/toastr.js"></script>
+      <script src="bower_components/bowser/bowser.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,client}) app/app.js -->
@@ -102,6 +107,8 @@
       <script src="components/auth/user.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
+      <script src="components/sgAlert/sgAlert.service.js"></script>
+      <script src="components/sgHttpInterceptor/sgHttpInterceptor.factory.js"></script>
       <script src="components/socket/socket.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->

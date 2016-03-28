@@ -7,11 +7,17 @@
     .factory('Auth', Auth);
 
   /* @ngInject */
-  function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
+  function Auth($location, $rootScope, $http, User, storageService, $q) {
     var currentUser = {};
+
+    if(storageService.getValue('token')) {
+      currentUser = User.get();
+    }
+    /*
     if($cookieStore.get('token')) {
       currentUser = User.get();
     }
+    */
 
     return {
       /**
@@ -78,7 +84,12 @@
       /**
        * Get auth token
        */
-      getToken: getToken
+      getToken: getToken,
+
+      /**
+       *
+       */
+      loginOAuth : loginOAuth
     };
 
     function login(user, callback) {
@@ -90,7 +101,11 @@
         password: user.password
       }).
       success(function(data) {
-        $cookieStore.put('token', data.token);
+        //$cookieStore.put('token', data.token);
+
+        storageService.setValue('token',data.token);
+
+
         currentUser = User.get();
         deferred.resolve(data);
         return cb();
@@ -105,7 +120,7 @@
     };
 
     function logout() {
-      $cookieStore.remove('token');
+      storageService.removeValue('token');
       currentUser = {};
     };
 
@@ -114,7 +129,8 @@
 
       return User.save(user,
         function(data) {
-          $cookieStore.put('token', data.token);
+          storageService.setValue('token', data.token);
+          //$cookieStore.put('token', data.token);
           currentUser = User.get();
           return cb(user);
         },
@@ -165,6 +181,16 @@
 
     function getToken() {
       return $cookieStore.get('token');
+    }
+
+    function loginOAuth(callback) {
+      var cb = callback || angular.noop;
+      var token = $cookies.token;
+      if(token) {
+        storageService.setValue('token',token);
+        currentUser = User.get();
+      }
+      return cb();
     }
 
   }

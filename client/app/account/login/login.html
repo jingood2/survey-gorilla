@@ -1,34 +1,50 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
 <div class="container">
-    <div class="row">
-    	<div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-2 col-xs-12">
-    		<div class="panel panel-default">
-			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Login via site</h3>
-			 	</div>
-			  	<div class="panel-body">
-			    	<form accept-charset="UTF-8" class="form-signin mg-btm" name="form" ng-submit="login(form)" role="form" novalidate>
-            <fieldset>
-			    	  <div class="form-group" ng-class="{'has-error': form.email.$invalid && !form.email.$pristine}">
-			    		    <input class="form-control" placeholder="yourmail@example.com" name="email" type="email" ng-model="user.email" required autofocus>
-			    		</div>
-              <div class="form-group" ng-class="{'has-error': form.email.$invalid && !form.email.$pristine}">
-			    			<input class="form-control" placeholder="Password" name="password" type="password" value="" ng-model="user.password" ng-minlength="4" ng-maxlength="15" required>
-			    		</div>
-			    		<div class="checkbox">
-			    	    	<label>
-			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
-			    	    	</label>
-			    	    </div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-			    	</fieldset>
-			      	</form>
-                      <hr/>
-                    <center><h4>OR</h4></center>
-                    <input class="btn btn-lg btn-facebook btn-block" type="submit" value="Login via facebook">
-			    </div>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-4 col-sm-10 col-sm-offset-2 col-xs-12">
+      <form class="form-signin mg-btm" name="form" ng-submit="login(form)" novalidate>
+          <h3 class="heading-desc">
+            <button type="button" class="close pull-right" aria-hidden="true">×</button>
+            Login to Survey Gorilla</h3>
+          <div class="social-box">
+            <div class="row mg-btm">
+              <div class="col-md-12">
+                <a href="#/auth/facebook" class="btn btn-primary btn-block">
+                  <i class="icon-facebook"></i>    Login with Facebook
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <a href="#" class="btn btn-info btn-block" >
+                  <i class="icon-twitter"></i>    Login with Twitter
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="main">
+            <div class="form-group" ng-class="{'has-error': form.email.$invalid && !form.email.$pristine}">
+              <input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" required autofocus>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': form.password.$invalid && !form.password.$pristine}">
+              <input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+            </div>
+            <span class="clearfix"></span>
+          </div>
+          <div class="login-footer">
+            <div class="row">
+              <div class="col-xs-6 col-md-6 pull-left">
+                <div class="left-section">
+                  <a href="">Forgot your password?</a>
+                  <a href="#signup">Sign up now</a>
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-6 pull-right">
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-large btn-danger pull-right" style="width: 100px">Login</button>
+              </div>
+            </div>
+          </div>
+    </form>
+    </div>
+  </div>
 </div>

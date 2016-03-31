@@ -7,10 +7,11 @@
     .controller('LoginCtrl', LoginCtrl);
 
   /* @ngInject */
-  function LoginCtrl($scope, Auth, $location) {
+  function LoginCtrl($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
     $scope.login = login;
+    $scope.loginOauth = loginOauth;
 
     function login(form) {
       $scope.submitted = true;
@@ -29,7 +30,11 @@
         });
       }
     };
-    
+
+    function loginOauth(provider) {
+      $window.location.href = '/auth/' + provider;
+    };
+
   }
-  
+
 })();

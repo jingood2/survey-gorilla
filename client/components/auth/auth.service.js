@@ -7,7 +7,7 @@
     .factory('Auth', Auth);
 
   /* @ngInject */
-  function Auth($location, $rootScope, $http, User, storageService, $q) {
+  function Auth($location, $rootScope, $http, $cookies, User, storageService, $q) {
     var currentUser = {};
 
     if(storageService.getValue('token')) {
@@ -186,6 +186,8 @@
     function loginOAuth(callback) {
       var cb = callback || angular.noop;
       var token = $cookies.token;
+      console.log('token :',token);
+      //var token = getToken();
       if(token) {
         storageService.setValue('token',token);
         currentUser = User.get();

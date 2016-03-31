@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.8.7\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ko_KR\n"
+
+#: client/app/main/main.html:5
+msgid "'Allo, 'Allo!"
+msgstr "‘여보세요’여보세요!"
+
+#: client/app/main/main.html:22
+msgid "Syncs in realtime across clients"
+msgstr "클라이언트에서 실시간으로 동기화"

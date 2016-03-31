@@ -1,0 +1,13 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: client/app/main/main.html:5
+msgid "'Allo, 'Allo!"
+msgstr ""
+
+#: client/app/main/main.html:22
+msgid "Syncs in realtime across clients"
+msgstr ""
